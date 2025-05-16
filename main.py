@@ -23,6 +23,11 @@ def main():
     logger.info("Starting Minecraft server broadcaster...")
     logger.info(f"Check interval: {check_interval} seconds")
     
+    # Initial authentication
+    if not crafty.login():
+        logger.error("Failed to authenticate with Crafty Controller. Check credentials.")
+        return
+    
     while True:
         try:
             # Fetch servers from Crafty Controller

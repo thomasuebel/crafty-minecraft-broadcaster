@@ -28,7 +28,8 @@ COPY crafty_api.py minecraft_broadcaster.py main.py ./
 
 # Set environment variables with default values
 ENV CRAFTY_API_URL="https://localhost:8443/api/v2" \
-    CRAFTY_API_TOKEN="" \
+    CRAFTY_USERNAME="" \
+    CRAFTY_PASSWORD="" \
     BROADCAST_IP="255.255.255.255" \
     MINECRAFT_BROADCAST_PORT=4445 \
     CHECK_INTERVAL=30
