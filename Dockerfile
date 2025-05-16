@@ -24,7 +24,7 @@ COPY --from=builder /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
 
 # Copy application code
-COPY crafty_api.py minecraft_broadcaster.py main.py ./
+COPY crafty_api.py minecraft_broadcaster.py web_server.py main.py ./
 
 # Set environment variables with default values
 ENV CRAFTY_API_URL="https://localhost:8443/api/v2" \
@@ -32,7 +32,14 @@ ENV CRAFTY_API_URL="https://localhost:8443/api/v2" \
     CRAFTY_PASSWORD="" \
     BROADCAST_IP="255.255.255.255" \
     MINECRAFT_BROADCAST_PORT=4445 \
-    CHECK_INTERVAL=30
+    CHECK_INTERVAL=30 \
+    ENABLE_WEB_SERVER="true" \
+    WEB_SERVER_HOST="0.0.0.0" \
+    WEB_SERVER_PORT=8080 \
+    TEMPLATES_DIR="/app/templates"
+
+# Expose web server port
+EXPOSE 8080
 
 # Run script
 CMD ["python", "main.py"]
